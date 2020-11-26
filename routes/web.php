@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeProdutosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', HomeController::class);
+
+Route::get('produtos', [HomeProdutosController::class, 'index']);
+
+Route::get('produtos/inserir', [HomeProdutosController::class, 'create']);
+
+Route::get('produtos/{nome?}/{valor?}', [HomeProdutosController::class, 'show']);
+
+Route::get('usuarios', function () {
+
+    return "pagina do usuario";
 });
